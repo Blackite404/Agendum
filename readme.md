@@ -11,12 +11,12 @@
 ```bash
 # Create database and schema
 psql -U postgres
-CREATE DATABASE dmdeals;
-\c dmdeals
-CREATE SCHEMA dmdapp;
+CREATE DATABASE agendum;
+\c agendum
+CREATE SCHEMA taskapp;
 
 # Run DDL script
-psql -U postgres -d dmdeals -f database/dmdapp/dbinit.sql
+    psql -U postgres -d agendum -f database/dbinit.sql
 ```
 
 ### 3. Virtual Environment

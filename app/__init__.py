@@ -1,0 +1,3 @@
+"""
+Agendum API Application
+"""
