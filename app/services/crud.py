@@ -5,7 +5,7 @@ from schemas import taskapp
 
 def calculate_urgency(priority: int, due_date: datetime) -> float:
     time_remaining = (due_date.replace(tzinfo=None) - datetime.now()).total_seconds() / 3600
-    score = (priority * 10) - max(0, time_remaining)
+    score = abs((priority * 10) - max(0, time_remaining))
     return round(score, 2)
 
 def create_task(db: Session, task: taskapp.TaskCreate):
