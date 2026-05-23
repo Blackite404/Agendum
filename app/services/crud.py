@@ -35,7 +35,7 @@ def update_task_partial(db: Session, task_id: int, task_update: taskapp.TaskUpda
         
      
     
-    update_data = task_update.dict(exclude_unset=True)
+    update_data = task_update.dict(exclude_unset=True, exclude_none=True)
     
     
     for key, value in update_data.items():
@@ -45,10 +45,7 @@ def update_task_partial(db: Session, task_id: int, task_update: taskapp.TaskUpda
     
     if "priority" in update_data or "due_date" in update_data:
         
-        current_priority = update_data.get("priority") or db_task.priority
-        current_due_date = update_data.get("due_date") or db_task.due_date
-        
-        db_task.urgency_score = calculate_urgency(current_priority, current_due_date)
+        db_task.urgency_score = calculate_urgency(db_task.priority, db_task.due_date)
         
     
     db.commit()
