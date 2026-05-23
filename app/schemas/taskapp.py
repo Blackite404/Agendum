@@ -5,7 +5,7 @@ from datetime import datetime
 class TaskBase(BaseModel):
     title: str
     description: str
-    priority: int = Field(..., ge=1, le=5)  # 1 (low) to 5 (high)
+    priority: int = Field(..., ge=1, le=10)  # 1 (low) to 5 (high)
     due_date: datetime
 
     @validator('due_date')
